@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-tech-blue-500: #8b5cf6; /* violet-500 */
+  --color-tech-blue-900: #ede9fe; /* violet-100 */
+}
+
+:root {
+  color-scheme: light;
+  --axis-stroke: #94a3b8; /* slate-400 */
+  --grid-stroke: #e2e8f0; /* slate-200 */
+  --tooltip-bg: rgba(255, 255, 255, 0.9);
+  --tooltip-border: #e2e8f0; /* slate-200 */
+  --tooltip-text: #0f172a; /* slate-900 */
+}
+
+@layer base {
+  html, body {
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-violet-500/30;
+    background-color: #f8fafc; /* slate-50 */
+    color: #0f172a; /* slate-900 */
+  }
+
+  body {
+    background-image: 
+      linear-gradient(to right, rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+/* Custom Scrollbar for the alert list */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300/50 rounded-full hover:bg-slate-400;
+}
+
+@keyframes scroll-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+.animate-scroll-vertical {
+  animation: scroll-vertical 20s linear infinite;
+}
+
+.hover-pause:hover .animate-scroll-vertical {
+  animation-play-state: paused;
+}
+
+.mask-gradient {
+  mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+}
